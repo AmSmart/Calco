@@ -1,0 +1,44 @@
+Public Class Form1
+    Dim totalCredits As Integer
+    Dim product As Integer
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Panel1.Visible = False
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Panel1.Visible = True
+    End Sub
+
+    Public Sub btnCalc_Click(sender As Object, e As EventArgs) Handles btnCalc.Click
+        For i As Integer = 0 To DataGridView1.RowCount - 1
+            totalCredits += DataGridView1.Rows(i).Cells(1).Value
+            Dim value1 As Integer = totalCredits
+        Next
+
+        For h As Integer = 0 To DataGridView1.RowCount - 1
+            Dim x As Integer
+            If DataGridView1.Rows(h).Cells(0).Value = "A" Then
+                x = 5
+            ElseIf DataGridView1.Rows(h).Cells(0).Value = "B" Then
+                x = 4
+            ElseIf DataGridView1.Rows(h).Cells(0).Value = "C" Then
+                x = 3
+            ElseIf DataGridView1.Rows(h).Cells(0).Value = "D" Then
+                x = 2
+            ElseIf DataGridView1.Rows(h).Cells(0).Value = "E" Then
+                x = 1
+            ElseIf DataGridView1.Rows(h).Cells(0).Value = "F" Then
+                x = 0
+            ElseIf DataGridView1.Rows(h).Cells(0).Value = "" Then
+                x = 0
+                DataGridView1.Rows(h).Cells(1).Value = 0
+                DataGridView1.Rows(h).Cells(0).Value = 0
+            End If
+            DataGridView1.Rows(h).Cells(3).Value = x
+
+            product += DataGridView1.Rows(h).Cells(1).Value * DataGridView1.Rows(h).Cells(3).Value
+        Next
+        Dim GP As Double = product / totalCredits
+        MessageBox.Show("Your GP is " + Convert.ToString(GP))
+    End Sub
+End Class

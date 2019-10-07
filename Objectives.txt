@@ -1,0 +1,5 @@
+avoid multiple operator error
+make textview non editable
+make equalto sign work
+add the icon
+THAT'S ALL
